@@ -1,0 +1,52 @@
+﻿<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - Gestion Chantiers</title>
+  <link rel="stylesheet" href="/dashboard.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header class="top">
+      <div>
+        <p class="kicker">Accueil</p>
+        <h1>Dashboard Gestion Chantiers</h1>
+      </div>
+      <button id="refreshBtn" type="button">Rafraîchir</button>
+    </header>
+
+    <section class="cards">
+      <article class="card">
+        <p>Clients</p>
+        <strong id="clientsCount">-</strong>
+      </article>
+      <article class="card">
+        <p>Techniciens</p>
+        <strong id="techniciensCount">-</strong>
+      </article>
+      <article class="card">
+        <p>Chantiers</p>
+        <strong id="chantiersCount">-</strong>
+      </article>
+      <article class="card">
+        <p>Vérifications</p>
+        <strong id="verificationsCount">-</strong>
+      </article>
+    </section>
+
+    <section class="panel">
+      <h2>Raccourcis API</h2>
+      <div class="links">
+        <a href="/api/clients" target="_blank" rel="noreferrer">/api/clients</a>
+        <a href="/api/techniciens" target="_blank" rel="noreferrer">/api/techniciens</a>
+        <a href="/api/chantiers" target="_blank" rel="noreferrer">/api/chantiers</a>
+        <a href="/api/verifications" target="_blank" rel="noreferrer">/api/verifications</a>
+      </div>
+      <p id="status" class="status"></p>
+    </section>
+  </main>
+
+  <script src="/dashboard.js"></script>
+</body>
+</html>
