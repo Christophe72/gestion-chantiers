@@ -1,0 +1,184 @@
+.dashboard {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.dashboard h2 {
+  color: var(--text-primary, #333);
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.stat-card {
+  background: var(--bg-card, white);
+  border: 1px solid var(--border-color, #ddd);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.stat-card h3 {
+  margin: 0 0 1rem 0;
+  font-size: 0.9rem;
+  color: var(--text-secondary, #666);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.stat-value {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--text-primary, #333);
+  margin-bottom: 0.5rem;
+}
+
+.stat-value.alert {
+  color: #dc3545;
+}
+
+.stat-label {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-secondary, #666);
+}
+
+.stat-clients { border-left: 4px solid #007bff; }
+.stat-techniciens { border-left: 4px solid #28a745; }
+.stat-chantiers { border-left: 4px solid #fd7e14; }
+.stat-en-cours { border-left: 4px solid #0dcaf0; }
+.stat-retard { border-left: 4px solid #dc3545; }
+.stat-termines { border-left: 4px solid #198754; }
+
+.dashboard-loading,
+.dashboard-error,
+.dashboard-empty {
+  padding: 2rem;
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--text-secondary, #666);
+}
+
+.dashboard-error {
+  color: #dc3545;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+}
+
+.dashboard-section {
+  background: var(--bg-card, white);
+  border: 1px solid var(--border-color, #ddd);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.dashboard-section h3 {
+  margin: 0 0 1.5rem 0;
+  color: var(--text-primary, #333);
+  font-size: 1.3rem;
+}
+
+.retards-section {
+  border-left: 4px solid #dc3545;
+}
+
+.retards-list,
+.recent-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.retard-item,
+.recent-item {
+  padding: 1rem;
+  background: var(--bg-secondary, #f9f9f9);
+  border-radius: 6px;
+  border-left: 3px solid #ffc107;
+  transition: all 0.3s ease;
+}
+
+.retard-item:hover,
+.recent-item:hover {
+  background: var(--bg-hover, #f0f0f0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.retard-header,
+.recent-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.retard-header h4,
+.recent-header h4 {
+  margin: 0;
+  color: var(--text-primary, #333);
+  font-size: 1.1rem;
+}
+
+.retard-adresse,
+.recent-adresse {
+  margin: 0.5rem 0 0 0;
+  color: var(--text-secondary, #666);
+  font-size: 0.9rem;
+}
+
+.retard-date {
+  margin: 0.5rem 0 0 0;
+  color: #dc3545;
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+.statut-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.statut-BROUILLON { background-color: #e9ecef; color: #495057; }
+.statut-EN_COURS { background-color: #d1ecf1; color: #0c5460; }
+.statut-TERMINE { background-color: #d4edda; color: #155724; }
+.statut-VALIDE { background-color: #cce5ff; color: #004085; }
+.statut-REFUSE { background-color: #f8d7da; color: #721c24; }
+
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 1rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+
+  .stat-value {
+    font-size: 2rem;
+  }
+
+  .dashboard-section {
+    padding: 1rem;
+  }
+}

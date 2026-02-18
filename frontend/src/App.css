@@ -1,0 +1,236 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+  --light-color: #f8f9fa;
+  --dark-color: #343a40;
+
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f5;
+  --bg-card: #ffffff;
+  --bg-input: #ffffff;
+  --bg-hover: #f0f0f0;
+
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --border-color: #ddd;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2a2a2a;
+  --bg-card: #262626;
+  --bg-input: #333333;
+  --bg-hover: #3a3a3a;
+
+  --text-primary: #f0f0f0;
+  --text-secondary: #b0b0b0;
+  --border-color: #444;
+}
+
+html,
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-primary);
+}
+
+/* Settings Modal */
+.settings-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
+}
+
+.settings-content {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 3rem;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.settings-content h2 {
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  font-size: 1.8rem;
+}
+
+.settings-content p {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.settings-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: var(--bg-input);
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.settings-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+.settings-content .btn-primary {
+  width: 100%;
+}
+
+.status-message {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.status-message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.status-message.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+/* Status Bar */
+.status-bar {
+  padding: 0.75rem 2rem;
+  text-align: center;
+  font-weight: 500;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.status-bar.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.status-bar.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  overflow-y: auto;
+  background-color: var(--bg-primary);
+}
+
+/* Common Button Styles */
+.btn-primary,
+.btn-success,
+.btn-edit,
+.btn-secondary,
+.btn-danger,
+.btn-danger-solid {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  box-shadow: 0 2px 6px rgba(0, 123, 255, 0.3);
+}
+
+.btn-primary:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.btn-success {
+  background-color: var(--success-color);
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+}
+
+.btn-edit {
+  background-color: #17a2b8;
+  color: white;
+}
+
+.btn-edit:hover {
+  background-color: #138496;
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+.btn-danger {
+  background-color: var(--warning-color);
+  color: #333;
+}
+
+.btn-danger:hover {
+  background-color: #ffb300;
+}
+
+.btn-danger-solid {
+  background-color: var(--danger-color);
+  color: white;
+}
+
+.btn-danger-solid:hover {
+  background-color: #c82333;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .settings-content {
+    padding: 2rem;
+  }
+
+  .status-bar {
+    padding: 0.75rem 1rem;
+  }
+}
