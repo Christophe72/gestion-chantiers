@@ -46,6 +46,7 @@ export default function ClientsList({ api, apiBase }) {
       loadClients();
     } catch (err) {
       console.error("Erreur ajout client:", err);
+      alert(`Erreur création client:\n${err.message}`);
     }
   }
 

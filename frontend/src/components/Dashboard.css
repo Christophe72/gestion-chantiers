@@ -27,9 +27,13 @@
   transition: all 0.3s ease;
 }
 
-.stat-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transform: translateY(-2px);
+.stat-card.clickable {
+  cursor: pointer;
+}
+
+.stat-card.clickable:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 .stat-card h3 {
@@ -113,10 +117,22 @@
   transition: all 0.3s ease;
 }
 
+.retard-item.clickable,
+.recent-item.clickable {
+  cursor: pointer;
+}
+
 .retard-item:hover,
 .recent-item:hover {
   background: var(--bg-hover, #f0f0f0);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.retard-item.clickable:hover,
+.recent-item.clickable:hover {
+  background: var(--bg-hover, #f0f0f0);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateX(4px);
 }
 
 .retard-header,

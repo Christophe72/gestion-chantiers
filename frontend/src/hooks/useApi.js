@@ -1,13 +1,28 @@
 import { useCallback, useState } from "react";
 
 function normalizeApiBase(value) {
-  const trimmed = (value || "").trim().replace(/\/$/, "");
-  if (trimmed.endsWith("/api")) return trimmed.slice(0, -4);
+  let trimmed = (value || "").trim().replace(/\/$/, "");
+  
+  // Si c'est vide, retourner vide
+  if (!trimmed) return "";
+  
+  // Ajouter le protocole s'il manque
+  if (!trimmed.startsWith("http://") && !trimmed.startsWith("https://")) {
+    trimmed = "http://" + trimmed;
+  }
+  
+  // Supprimer /api s'il existe déjà à la fin
+  if (trimmed.endsWith("/api")) {
+    trimmed = trimmed.slice(0, -4);
+  }
+  
   return trimmed;
 }
 
 function buildUrl(apiBase, path) {
-  return `${apiBase}${path}`;
+  // Vérifier que apiBase ne se termine pas déjà par /api
+  const cleanBase = apiBase.endsWith("/api") ? apiBase.slice(0, -4) : apiBase;
+  return `${cleanBase}${path}`;
 }
 
 export function useApi(apiBase) {
@@ -18,6 +33,7 @@ export function useApi(apiBase) {
       try {
         setStatus({ message: "", isError: false });
         const url = buildUrl(apiBase, path);
+        console.log("API Call:", url);
         const response = await fetch(url, {
           headers: { "Content-Type": "application/json", ...options.headers },
           ...options,
@@ -25,9 +41,8 @@ export function useApi(apiBase) {
 
         if (!response.ok) {
           const errorData = await response.text();
-          throw new Error(
-            `Erreur ${response.status}: ${response.statusText}\n${errorData}`
-          );
+          const errorMsg = `❌ Erreur ${response.status} ${response.statusText}\nURL: ${url}\nRéponse: ${errorData || '(vide)'}`;
+          throw new Error(errorMsg);
         }
 
         const contentType = response.headers.get("content-type");

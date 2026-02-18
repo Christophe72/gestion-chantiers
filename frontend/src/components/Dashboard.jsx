@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { API_ROUTES, STATUT_LABELS } from "../utils/constants";
 import "./Dashboard.css";
 
 export default function Dashboard({ api, apiBase }) {
+  const navigate = useNavigate();
   const [stats, setStats] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -74,37 +76,55 @@ export default function Dashboard({ api, apiBase }) {
       <h2>Tableau de Bord</h2>
 
       <div className="stats-grid">
-        <div className="stat-card stat-clients">
+        <div 
+          className="stat-card stat-clients clickable"
+          onClick={() => navigate("/clients")}
+        >
           <h3>Clients</h3>
           <div className="stat-value">{stats.totalClients}</div>
           <p className="stat-label">Total</p>
         </div>
 
-        <div className="stat-card stat-techniciens">
+        <div 
+          className="stat-card stat-techniciens clickable"
+          onClick={() => navigate("/techniciens")}
+        >
           <h3>Techniciens</h3>
           <div className="stat-value">{stats.totalTechniciens}</div>
           <p className="stat-label">Total</p>
         </div>
 
-        <div className="stat-card stat-chantiers">
+        <div 
+          className="stat-card stat-chantiers clickable"
+          onClick={() => navigate("/chantiers")}
+        >
           <h3>Chantiers</h3>
           <div className="stat-value">{stats.totalChantiers}</div>
           <p className="stat-label">Total</p>
         </div>
 
-        <div className="stat-card stat-en-cours">
+        <div 
+          className="stat-card stat-en-cours clickable"
+          onClick={() => navigate("/chantiers")}
+        >
           <h3>En Cours</h3>
           <div className="stat-value">{stats.chantiersEnCours}</div>
           <p className="stat-label">Chantiers actifs</p>
         </div>
 
-        <div className="stat-card stat-retard">
+        <div 
+          className="stat-card stat-retard clickable"
+          onClick={() => navigate("/chantiers")}
+        >
           <h3>En Retard</h3>
           <div className="stat-value alert">{stats.chantiersEnRetard}</div>
           <p className="stat-label">À vérifier</p>
         </div>
 
-        <div className="stat-card stat-termines">
+        <div 
+          className="stat-card stat-termines clickable"
+          onClick={() => navigate("/chantiers")}
+        >
           <h3>Terminés</h3>
           <div className="stat-value">{stats.chantiersTermines}</div>
           <p className="stat-label">Complétés</p>
@@ -123,7 +143,11 @@ export default function Dashboard({ api, apiBase }) {
               })
               .slice(0, 5)
               .map(chantier => (
-                <div key={chantier.id} className="retard-item">
+                <div 
+                  key={chantier.id} 
+                  className="retard-item clickable"
+                  onClick={() => navigate("/chantiers")}
+                >
                   <div className="retard-header">
                     <h4>{chantier.reference}</h4>
                     <span className={`statut-badge statut-${chantier.statut}`}>
@@ -145,7 +169,11 @@ export default function Dashboard({ api, apiBase }) {
         <h3>Chantiers Récents</h3>
         <div className="recent-list">
           {stats.chantiers.slice(0, 5).map(chantier => (
-            <div key={chantier.id} className="recent-item">
+            <div 
+              key={chantier.id} 
+              className="recent-item clickable"
+              onClick={() => navigate("/chantiers")}
+            >
               <div className="recent-header">
                 <h4>{chantier.reference}</h4>
                 <span className={`statut-badge statut-${chantier.statut}`}>
